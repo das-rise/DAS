@@ -1,5 +1,5 @@
 # Base URL for the site
-base_url = "https://rise-dependable-transport-systems.github.io/DAS"
+base_url = "https://das-rise.github.io/DAS"
 
 # Site title
 title = "Dependable and Autonomous Systems"
