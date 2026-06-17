@@ -6,7 +6,6 @@ year_start = 2015
 year_end = 2019
 status = "completed"
 description = "FFI projects on future automotive electrical architecture, with RISE contributing to systems-of-systems, safety, connectivity and architecture methods for connected vehicles."
-url = "https://www.vinnova.se/en/p/next-generation-electrical-architecture"
 url = "https://www.vinnova.se/en/p/next-generation-electrical-architecture-step-2/"
 code = ""
 video = ""
