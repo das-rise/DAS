@@ -4,10 +4,11 @@ title = "SUNRISE"
 [extra]
 year_start = 2023
 year_end = 2025
+status = "completed"
 description = "EU project developing a harmonised and scalable safety assurance framework for testing and validating connected and automated mobility systems."
 url = "https://ccam-sunrise-project.eu/"
 code = ""
-video = ""
+video = "https://youtu.be/Jy0QHD_BNpc?si=sWG0avB_6-BnbS6W"
 people = ["anders-thorsen", "martin-skoglund", "ashfaq-farooqui", "behrooz-sangchoolie", "fredrik-warg", "karl-lundgren", "mateen-malik"]
 +++
 

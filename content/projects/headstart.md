@@ -4,6 +4,7 @@ title = "Headstart"
 [extra]
 year_start = 2019
 year_end = 2022
+status = "completed"
 description = "EU project on harmonised testing and validation procedures for connected and automated driving functions, including positioning, communication and cybersecurity."
 url = "https://www.headstart-project.eu/"
 code = ""
