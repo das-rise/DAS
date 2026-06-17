@@ -3,7 +3,7 @@ title = "Sunrise"
 
 [extra]
 year_start = 2023
-year_end = ""
+year_end = 2025
 description = "EU project on Connected and Automated Mobility (CCAM) systems research."
 url = "https://ccam-sunrise-project.eu/"
 code = ""
