@@ -24,7 +24,11 @@ DAS/
 ├── config.toml           # Main site configuration
 ├── content/              # Content pages
 │   ├── _index.md         # Homepage (team description)
-│   ├── team/            # Team member pages (one file per member)
+│   ├── team/            # Team member pages (one directory per member)
+│   │   ├── _index.md
+│   │   └── <member-slug>/
+│   │       ├── index.md
+│   │       └── photo.jpg (optional profile photo)
 │   ├── projects/         # Project pages (one file per project)
 │   ├── software/         # Software page
 │   └── publications/     # Publications section
@@ -110,7 +114,7 @@ Software tools developed by the team displayed as a list with:
 
 ### Adding a Team Member
 
-Create a new file in `content/team/`:
+Create a directory `content/team/<member-slug>/` and an `index.md` file inside:
 
 ```markdown
 +++
@@ -119,7 +123,7 @@ title = "Full Name"
 [extra]
 title = "Research Position"
 email = "firstname.lastname@ri.se"
-image = "path/to/photo.jpg"
+image = "photo.jpg" # Or external URL like "https://..."
 google_scholar = "https://scholar.google.com/..."
 linkedin = "https://linkedin.com/in/..."
 orcid = "https://orcid.org/..."
@@ -127,6 +131,8 @@ orcid = "https://orcid.org/..."
 
 Research bio and interests go here.
 ```
+
+To add a profile photo, place the image file (e.g., `photo.jpg`) inside the member's directory (`content/team/<member-slug>/photo.jpg`) and set `image = "photo.jpg"` in `index.md`. External URLs (`https://...`) are also supported.
 
 ### Adding a Project
 

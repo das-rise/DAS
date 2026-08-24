@@ -31,15 +31,19 @@
                 <div class="people-grid">
                     {% for person_slug in page.extra.people %}
                     {% if page.lang and page.lang != "en" %}
-                        {% set person = get_page(path=page.lang ~ "/team/" ~ person_slug ~ ".md") %}
+                        {% set person = get_page(path=page.lang ~ "/team/" ~ person_slug ~ "/index.md") %}
                     {% else %}
-                        {% set person = get_page(path="team/" ~ person_slug ~ ".md") %}
+                        {% set person = get_page(path="team/" ~ person_slug ~ "/index.md") %}
                     {% endif %}
                     {% if person %}
                     <a href="{{ person.permalink }}" class="person-link">
                         {% if person.extra.image %}
                         <div class="person-image">
+                            {% if person.extra.image is starting_with(pat="http://") or person.extra.image is starting_with(pat="https://") or person.extra.image is starting_with(pat="/") %}
                             <img src="{{ person.extra.image }}" alt="{{ person.title }}">
+                            {% else %}
+                            <img src="{{ person.permalink ~ person.extra.image }}" alt="{{ person.title }}">
+                            {% endif %}
                         </div>
                         {% endif %}
                         <div class="person-info">
