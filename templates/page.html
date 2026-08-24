@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% import "macros.html" as macros %}
 
 {% block content %}
 <div class="page-template">
@@ -10,14 +9,14 @@
                 
                 {% if page.extra.year_start %}
                 <div class="page-years">
-                    <strong>{{ macros::t(key="page.project_period") }}</strong>
-                    {{ page.extra.year_start }}{% if page.extra.year_end %} - {{ page.extra.year_end }}{% else %} - {{ macros::t(key="common.present") }}{% endif %}
+                    <strong>{{ trans(key="page.project_period") }}</strong>
+                    {{ page.extra.year_start }}{% if page.extra.year_end %} - {{ page.extra.year_end }}{% else %} - {{ trans(key="common.present") }}{% endif %}
                 </div>
                 {% endif %}
                 
                 {% if page.extra.title %}
                 <div class="page-title-field">
-                    <strong>{{ macros::t(key="page.position") }}</strong> {{ page.extra.title }}
+                    <strong>{{ trans(key="page.position") }}</strong> {{ page.extra.title }}
                 </div>
                 {% endif %}
             </header>
@@ -28,7 +27,7 @@
             
             {% if page.extra.people %}
             <div class="project-people">
-                <h2>{{ macros::t(key="page.people_involved") }}</h2>
+                <h2>{{ trans(key="page.people_involved") }}</h2>
                 <div class="people-grid">
                     {% for person_slug in page.extra.people %}
                     {% if page.lang and page.lang != "en" %}
@@ -58,21 +57,21 @@
 
             {% if page.extra.url or page.extra.code or page.extra.video %}
             <div class="project-links">
-                <h2>{{ macros::t(key="page.links") }}</h2>
+                <h2>{{ trans(key="page.links") }}</h2>
                 <div class="links-container">
                     {% if page.extra.url %}
                     <a href="{{ page.extra.url }}" class="project-link" target="_blank" rel="noopener">
-                        <i class="fas fa-external-link-alt"></i> {{ macros::t(key="common.website") }}
+                        <i class="fas fa-external-link-alt"></i> {{ trans(key="common.website") }}
                     </a>
                     {% endif %}
                     {% if page.extra.code %}
                     <a href="{{ page.extra.code }}" class="project-link" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i> {{ macros::t(key="common.code") }}
+                        <i class="fab fa-github"></i> {{ trans(key="common.code") }}
                     </a>
                     {% endif %}
                     {% if page.extra.video %}
                     <a href="{{ page.extra.video }}" class="project-link" target="_blank" rel="noopener">
-                        <i class="fab fa-youtube"></i> {{ macros::t(key="common.video") }}
+                        <i class="fab fa-youtube"></i> {{ trans(key="common.video") }}
                     </a>
                     {% endif %}
                 </div>
@@ -89,7 +88,7 @@
             
              {% if page.extra.google_scholar or page.extra.linkedin or page.extra.orcid %}
              <div class="member-social-links">
-                 <h2>{{ macros::t(key="common.profiles") }}</h2>
+                 <h2>{{ trans(key="common.profiles") }}</h2>
                  <div class="social-links-container">
                      {% if page.extra.google_scholar %}
                      <a href="{{ page.extra.google_scholar }}" class="social-profile-link" target="_blank" rel="noopener">
@@ -124,13 +123,13 @@
             
              {% if has_member_projects %}
              <div class="member-projects-section">
-                 <h2>{{ macros::t(key="page.projects") }}</h2>
+                 <h2>{{ trans(key="page.projects") }}</h2>
                  <div class="projects-grid-member">
                      {% for project in projects_section.pages %}
                      {% if project.extra.people and page.slug in project.extra.people %}
                      <a href="{{ project.permalink }}" class="project-card-member">
                          <h3>{{ project.title }}</h3>
-                         <span class="project-years">{{ project.extra.year_start }}{% if project.extra.year_end %} - {{ project.extra.year_end }}{% else %} - {{ macros::t(key="common.present") }}{% endif %}</span>
+                         <span class="project-years">{{ project.extra.year_start }}{% if project.extra.year_end %} - {{ project.extra.year_end }}{% else %} - {{ trans(key="common.present") }}{% endif %}</span>
                          {% if project.extra.description %}
                          <p>{{ project.extra.description }}</p>
                          {% endif %}

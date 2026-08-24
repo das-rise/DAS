@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% import "macros.html" as macros %}
 
 {% block content %}
 <div class="section-template">
@@ -17,9 +16,9 @@
             {% endif %}
 
                 <div class="projects-section">
-                <h2 class="section-heading">{{ macros::t(key="projects.ongoing") }}</h2>
+                <h2 class="section-heading">{{ trans(key="projects.ongoing") }}</h2>
                 <div class="projects-grid">
-                    {% for page in section.pages | filter(attribute="extra.year_start") | sort(attribute="extra.year_start") | reverse %}
+                    {% for page in [p for p in section.pages if p.extra.year_start is defined] | sort(attribute="extra.year_start") | reverse %}
                     {% set is_ongoing = page.extra.status is not defined or page.extra.status != "completed" %}
                     {% if is_ongoing %}
                     <article class="project-card">
@@ -28,7 +27,7 @@
                                 <a href="{{ page.permalink }}">{{ page.title }}</a>
                             </h3>
                             {% if page.extra.year_start %}
-                            <span class="project-year">{{ page.extra.year_start }}{% if page.extra.year_end %} - {{ page.extra.year_end }}{% else %} - {{ macros::t(key="common.present") }}{% endif %}</span>
+                            <span class="project-year">{{ page.extra.year_start }}{% if page.extra.year_end %} - {{ page.extra.year_end }}{% else %} - {{ trans(key="common.present") }}{% endif %}</span>
                             {% endif %}
                         </header>
 
@@ -41,17 +40,17 @@
                         <footer class="project-footer">
                             {% if page.extra.url %}
                                 <a href="{{ page.extra.url }}" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> {{ macros::t(key="common.website") }}
+                                    <i class="fas fa-external-link-alt"></i> {{ trans(key="common.website") }}
                                 </a>
                             {% endif %}
                             {% if page.extra.code %}
                                 <a href="{{ page.extra.code }}" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> {{ macros::t(key="common.code") }}
+                                    <i class="fab fa-github"></i> {{ trans(key="common.code") }}
                                 </a>
                             {% endif %}
                             {% if page.extra.video %}
                                 <a href="{{ page.extra.video }}" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-youtube"></i> {{ macros::t(key="common.video") }}
+                                    <i class="fab fa-youtube"></i> {{ trans(key="common.video") }}
                                 </a>
                             {% endif %}
                         </footer>
@@ -62,9 +61,9 @@
             </div>
 
                 <div class="projects-section">
-                <h2 class="section-heading">{{ macros::t(key="projects.completed") }}</h2>
+                <h2 class="section-heading">{{ trans(key="projects.completed") }}</h2>
                 <div class="projects-grid">
-                    {% for page in section.pages | filter(attribute="extra.year_start") | sort(attribute="extra.year_start") | reverse %}
+                    {% for page in [p for p in section.pages if p.extra.year_start is defined] | sort(attribute="extra.year_start") | reverse %}
                     {% set is_completed = page.extra.status is defined and page.extra.status == "completed" %}
                     {% if is_completed %}
                     <article class="project-card">
@@ -86,17 +85,17 @@
                         <footer class="project-footer">
                             {% if page.extra.url %}
                                 <a href="{{ page.extra.url }}" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fas fa-external-link-alt"></i> {{ macros::t(key="common.website") }}
+                                    <i class="fas fa-external-link-alt"></i> {{ trans(key="common.website") }}
                                 </a>
                             {% endif %}
                             {% if page.extra.code %}
                                 <a href="{{ page.extra.code }}" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-github"></i> {{ macros::t(key="common.code") }}
+                                    <i class="fab fa-github"></i> {{ trans(key="common.code") }}
                                 </a>
                             {% endif %}
                             {% if page.extra.video %}
                                 <a href="{{ page.extra.video }}" class="project-link" target="_blank" rel="noopener">
-                                    <i class="fab fa-youtube"></i> {{ macros::t(key="common.video") }}
+                                    <i class="fab fa-youtube"></i> {{ trans(key="common.video") }}
                                 </a>
                             {% endif %}
                         </footer>

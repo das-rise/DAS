@@ -1,13 +1,12 @@
-{% import "macros.html" as macros %}
 <!DOCTYPE html>
-<html lang="{{ macros::get_lang() }}" dir="ltr">
+<html lang="{{ lang | default(value=config.default_language) }}" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}</title>
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+    <title>{% if page?.title %}{{ page.title }} | {% elif section?.title %}{{ section.title }} | {% endif %}{{ config.title }}</title>
+    <meta name="description" content="{% if page?.description %}{{ page.description }}{% elif section?.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
@@ -144,12 +143,12 @@
             <!-- Navigation links -->
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
-                    <a href="{{ macros::url_localized(path="/") }}" class="nav-link"><i class="fas fa-home"></i></a>
+                    <a href="{{ get_url(path="/") }}" class="nav-link"><i class="fas fa-home"></i></a>
                 </li>
                 {% if config.extra.menu %}
                     {% for item in config.extra.menu | sort(attribute="weight") %}
                     <li class="nav-item">
-                        <a href="{{ macros::url_localized(path=item.url) }}" class="nav-link">{{ macros::t(key="nav." ~ item.name | lower | replace(from=" ", to="_")) }}</a>
+                        <a href="{{ get_url(path=item.url) }}" class="nav-link">{{ trans(key="nav." ~ item.name | lower | replace(from=" ", to="_")) }}</a>
                     </li>
                     {% endfor %}
                 {% endif %}
@@ -171,7 +170,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p style="font-size: 0.8em;">&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}. <br> {{ macros::t(key="footer.copyright") }} <a href="https://www.getzola.org/">Zola</a> {{ macros::t(key="footer.using_theme") }} <a href="https://github.com/jskaza/peritus"><strong>peritus</strong></a> {{ macros::t(key="footer.theme_by") }} <a href="https://jskaza.github.io/">Jonathan Skaza</a>.</p>
+            <p style="font-size: 0.8em;">&copy; {{ now() | date(format="%Y") }} {{ config.extra.name | default(value=config.title) }}. <br> {{ trans(key="footer.copyright") }} <a href="https://www.getzola.org/">Zola</a> {{ trans(key="footer.using_theme") }} <a href="https://github.com/jskaza/peritus"><strong>peritus</strong></a> {{ trans(key="footer.theme_by") }} <a href="https://jskaza.github.io/">Jonathan Skaza</a>.</p>
         </div>
     </footer>
 

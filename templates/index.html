@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% import "macros.html" as macros %}
 
 {% block extra_styles %}
 <style>
@@ -112,7 +111,7 @@
 {% endblock extra_styles %}
 
 {% block content %}
-{% set is_sv = section.path is containing("sv") %}
+{% set is_sv = section.path is containing(pat="sv") %}
 <div class="hero-section">
     <div class="container">
         <div class="hero-content">
@@ -123,7 +122,7 @@
                 <p class="location">{% if is_sv %}{{ config.extra.sv.location }}{% else %}{{ config.extra.location }}{% endif %}</p>
 
                   <div class="bio">
-                      <h3>{{ macros::t(key="index.about_us") }}</h3>
+                      <h3>{{ trans(key="index.about_us") }}</h3>
                       <div>{{ section.content | safe }}</div>
                   </div>
 

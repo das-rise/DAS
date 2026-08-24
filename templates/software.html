@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% import "macros.html" as macros %}
 
 {% block content %}
 <div class="section-template">
@@ -30,17 +29,17 @@
                     <div class="software-links">
                         {% if item.website %}
                         <a href="{{ item.website }}" class="software-link" target="_blank" rel="noopener">
-                            <i class="fas fa-globe"></i> {{ macros::t(key="common.website") }}
+                            <i class="fas fa-globe"></i> {{ trans(key="common.website") }}
                         </a>
                         {% endif %}
                         {% if item.github %}
                         <a href="{{ item.github }}" class="software-link" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i> {{ macros::t(key="common.source") }}
+                            <i class="fab fa-github"></i> {{ trans(key="common.source") }}
                         </a>
                         {% endif %}
                         {% if item.documentation %}
                         <a href="{{ item.documentation }}" class="software-link" target="_blank" rel="noopener">
-                            <i class="fas fa-book"></i> {{ macros::t(key="common.documentation") }}
+                            <i class="fas fa-book"></i> {{ trans(key="common.documentation") }}
                         </a>
                         {% endif %}
                     </div>

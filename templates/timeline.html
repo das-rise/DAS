@@ -19,7 +19,7 @@
             <div class="timeline-segments" id="timelineSegments"></div>
             
             {% set projects_section = get_section(path="projects/_index.md") %}
-            {% set pages_with_years = projects_section.pages | filter(attribute="extra.year_start") | sort(attribute="extra.year_start") %}
+            {% set pages_with_years = [p for p in projects_section.pages if p.extra.year_start is defined] | sort(attribute="extra.year_start") %}
             
             {% set current_year = now() | date(format="%Y") | int %}
             {% set prev_year = 0 %}
@@ -36,7 +36,7 @@
                     {% set_global prev_year = year %}
                 {% endif %}
 
-                {% set is_even = loop.index is divisibleby(2) %}
+                {% set is_even = loop.index is even %}
                 {% if is_even %}
                 <div class="event right" data-project-index="{{ loop.index0 }}">
                 {% else %}

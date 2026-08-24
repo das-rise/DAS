@@ -7,6 +7,9 @@ title = "Dependable and Autonomous Systems"
 # Site description
 description = "Research unit focused on verification, validation, and supervisory control of automated systems"
 
+# Language
+default_language = "en"
+
 # Theme
 theme = "peritus"
 
@@ -93,5 +96,31 @@ dark_card_background = "#1A1A1A"  # Dark cards
 dark_border_color = "#2A2A2A"     # Dark border
 dark_light_background = "#1F1F1F" # Slightly lighter dark
 
-# Language
-default_language = "en"
+[translations]
+"nav.team" = "Team"
+"nav.projects" = "Projects"
+"nav.timeline" = "Timeline"
+"nav.software" = "Software"
+"footer.copyright" = "Built with"
+"footer.using_theme" = "using the"
+"footer.theme_by" = "theme by"
+"common.present" = "Present"
+"common.website" = "Website"
+"common.code" = "Code"
+"common.video" = "Video"
+"common.source" = "Source"
+"common.documentation" = "Documentation"
+"common.links" = "Links"
+"common.profiles" = "Profiles"
+"page.project_period" = "Project Period:"
+"page.position" = "Position:"
+"page.people_involved" = "People Involved"
+"page.projects" = "Projects"
+"page.links" = "Links"
+"projects.ongoing" = "Ongoing Projects"
+"projects.completed" = "Completed Projects"
+"index.about_us" = "About Us"
+"team.team_title" = "Team"
+"team.team_description" = "Our research team members"
+"software.software_title" = "Software"
+"software.software_description" = "Software tools and applications developed by the team"
