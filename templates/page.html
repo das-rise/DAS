@@ -4,21 +4,32 @@
 <div class="page-template">
     <div class="container">
         <article class="page-content">
-            <header class="page-header">
-                <h1>{{ page.title }}</h1>
-                
-                {% if page.extra.year_start %}
-                <div class="page-years">
-                    <strong>{{ trans(key="page.project_period") }}</strong>
-                    {{ page.extra.year_start }}{% if page.extra.year_end %} - {{ page.extra.year_end }}{% else %} - {{ trans(key="common.present") }}{% endif %}
+            <header class="page-header{% if page.extra.image and page.extra.image != "" %} has-image{% endif %}">
+                {% if page.extra.image and page.extra.image != "" %}
+                <div class="member-profile-image">
+                    {% if page.extra.image is starting_with(pat="http://") or page.extra.image is starting_with(pat="https://") or page.extra.image is starting_with(pat="/") %}
+                    <img src="{{ page.extra.image }}" alt="{{ page.title }}">
+                    {% else %}
+                    <img src="{{ page.permalink ~ page.extra.image }}" alt="{{ page.title }}">
+                    {% endif %}
                 </div>
                 {% endif %}
-                
-                {% if page.extra.title %}
-                <div class="page-title-field">
-                    <strong>{{ trans(key="page.position") }}</strong> {{ page.extra.title }}
+                <div class="page-header-info">
+                    <h1>{{ page.title }}</h1>
+                    
+                    {% if page.extra.year_start %}
+                    <div class="page-years">
+                        <strong>{{ trans(key="page.project_period") }}</strong>
+                        {{ page.extra.year_start }}{% if page.extra.year_end %} - {{ page.extra.year_end }}{% else %} - {{ trans(key="common.present") }}{% endif %}
+                    </div>
+                    {% endif %}
+                    
+                    {% if page.extra.title %}
+                    <div class="page-title-field">
+                        <strong>{{ trans(key="page.position") }}</strong> {{ page.extra.title }}
+                    </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </header>
             
             <div class="page-body">
@@ -37,7 +48,7 @@
                     {% endif %}
                     {% if person %}
                     <a href="{{ person.permalink }}" class="person-link">
-                        {% if person.extra.image %}
+                        {% if person.extra.image and person.extra.image != "" %}
                         <div class="person-image">
                             {% if person.extra.image is starting_with(pat="http://") or person.extra.image is starting_with(pat="https://") or person.extra.image is starting_with(pat="/") %}
                             <img src="{{ person.extra.image }}" alt="{{ person.title }}">
@@ -161,6 +172,32 @@
     margin-bottom: 3rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border-color);
+}
+
+.page-header.has-image {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.member-profile-image {
+    width: 140px;
+    height: 140px;
+    min-width: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.member-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.page-header-info {
+    flex: 1;
 }
 
 .page-header h1 {
@@ -444,6 +481,12 @@
 }
 
 @media (max-width: 768px) {
+    .page-header.has-image {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
     .page-header h1 {
         font-size: 2rem;
     }
