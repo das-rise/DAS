@@ -3,6 +3,33 @@
   "extends": ["config:recommended"],
   "schedule": ["every weekend"],
   "labels": ["dependencies"],
+
+  // Automerge minor/patch updates and digest pins once CI passes
+  "packageRules": [
+    {
+      "description": "Automerge minor, patch, and digest updates",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Never automerge Zola updates",
+      "matchPackageNames": ["getzola/zola"],
+      "automerge": false
+    },
+    {
+      "description": "Group and pin GitHub Actions",
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions",
+      "pinDigests": true
+    },
+    {
+      "description": "Group Git submodules",
+      "matchManagers": ["git-submodules"],
+      "groupName": "Git Submodules"
+    }
+  ],
+
   "customManagers": [
     {
       "customType": "regex",
@@ -13,17 +40,6 @@
       "depNameTemplate": "getzola/zola",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^v(?<version>.*)$"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchManagers": ["github-actions"],
-      "groupName": "GitHub Actions",
-      "pinDigests": true
-    },
-    {
-      "matchManagers": ["git-submodules"],
-      "groupName": "Git Submodules"
     }
   ]
 }
